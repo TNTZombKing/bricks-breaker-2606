@@ -108,7 +108,7 @@ void Game::CheckCollision()
 	if (bricks.empty())
 	{
 		ball.moving = false;
-		std::cout << "You win! Press 'R' to play again";
+		std::cout << "You win! Press 'R' to play again.";
 	}
 
 	if (paddle.Contains(ball.x_position + ball.x_velocity, ball.y_velocity + ball.y_position))
@@ -117,5 +117,9 @@ void Game::CheckCollision()
 	}
 
 	// TODO #7 - If ball touches bottom of window, pause ball and display (render) defeat text with R to reset
-
+	if (ball.y_position >= WINDOW_HEIGHT - 1) //If I want a faster response I would add - 8
+	{
+		ball.moving = false;
+		std::cout << "You lose. Press 'R' to play again.";
+	}
 }
