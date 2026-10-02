@@ -108,7 +108,9 @@ void Game::CheckCollision()
 	if (bricks.empty())
 	{
 		ball.moving = false;
-		std::cout << "You win! Press 'R' to play again.";
+		std::string win = "You win! Press 'R' to play again.";
+		Console::SetCursorPosition((WINDOW_WIDTH - win.length()) / 2, WINDOW_HEIGHT / 2); //Window Width is centering the text halfway while Window Height is putting it in the middle
+		std::cout << win;
 	}
 
 	if (paddle.Contains(ball.x_position + ball.x_velocity, ball.y_velocity + ball.y_position))
@@ -120,6 +122,8 @@ void Game::CheckCollision()
 	if (ball.y_position >= WINDOW_HEIGHT - 1) //If I want a faster response I would add - 8
 	{
 		ball.moving = false;
-		std::cout << "You lose. Press 'R' to play again.";
+		std::string lose = "You lose. Press 'R' to play again.";
+		Console::SetCursorPosition((WINDOW_WIDTH - lose.length()) / 2, WINDOW_HEIGHT / 2);
+		std::cout << lose;
 	}
 }
